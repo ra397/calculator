@@ -1,0 +1,36 @@
+* {
+    border: 1px solid red;
+}
+
+.main_container {
+    border: 1px solid blue;
+    display: flex;
+    flex-flow: column;
+    min-width: 500px;
+    width: 500px;
+    min-height: 500px;
+    height: 100%;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.row.display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equals {
+    flex: 2;
+}

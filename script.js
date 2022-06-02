@@ -3,7 +3,7 @@ function add(num1, num2) {
 }
 
 function subtract(num1, num2) {
-    return num1 - num1;
+    return num1 - num2;
 }
 
 function multiply(num1, num2) {
@@ -11,17 +11,17 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    return Math.round(num1 / num2);
 }
 
 function operate(operator, num1, num2) {
     if (operator === '+') {
         return add(num1, num2);
-    } else if (operator === '-') {
+    } else if (operator === '−') {
         return subtract(num1, num2);
-    } else if (operator === '*') {
+    } else if (operator === '×') {
         return multiply(num1, num2);
-    } else if (operator === '/') {
+    } else if (operator === '÷') {
         return divide(num1, num2);
     } else {
         return "ERROR";
@@ -41,6 +41,7 @@ function hasOperator(str) {
 }
 
 function evaluate_expression(str) {
+    console.log("LOOK HERE:" + str + ".");
     // find the two numbers and the operator
     let operator_char = '';
     let found_operator = false;
@@ -96,12 +97,12 @@ inputs.forEach((input) => {
                 if (e.target.textContent === '=') {
                     if (hasOperator(expression)) {
                         // evaluate and update expression
-                        evaluate_expression(expression);
+                        expression = evaluate_expression(expression);
                     }
                 } else {
                     if (hasOperator(expression)) {
                         // evaluate and update expression, append new operator
-                        evaluate_expression(expression);
+                        expression = evaluate_expression(expression) + e.target.textContent;
                     } else {
                         expression += e.target.textContent;
                     }

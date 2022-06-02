@@ -27,3 +27,29 @@ function operate(operator, num1, num2) {
         return "ERROR";
     }
 }
+
+// A string representing the display window 
+let expression = '';
+
+// create a reference for all calculator keys
+const inputs = document.querySelectorAll('.input');
+
+// create a reference for the display window
+const display = document.querySelector('.row.display');
+
+inputs.forEach((input) => {
+    input.addEventListener('click', function(e) {
+        // update expression
+        if (e.target.textContent === '=' || e.target.textContent === '+'
+        || e.target.textContent === '−' || e.target.textContent === '×'
+        || e.target.textContent === '÷') {
+            expression += ' ';
+        }
+        if (isNaN(expression.charAt(expression.length - 1))) {
+            expression += ' ';
+        }
+        expression += e.target.textContent;
+        // update display using expression
+        display.textContent = expression;
+    })
+});

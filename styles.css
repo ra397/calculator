@@ -1,34 +1,39 @@
 * {
-    border: 1px solid red;
+    border: 1px solid rgb(116, 113, 113);
 }
 
 .main_container {
-    border: 1px solid blue;
-    display: flex;
-    flex-flow: column;
     min-width: 500px;
     width: 500px;
     min-height: 500px;
     height: 100%;
     margin: auto;
+    margin-top: 150px;
+    font-family: monospace;
 }
 
 .row {
     display: flex;
-    flex: 1;
+    min-height: 100px;
 }
 
 .row.display {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 32px;
 }
 
 .input {
     flex: 1;
+    font-size: 22px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+.input:hover {
+    font-size: 45px;
 }
 
 .equals {

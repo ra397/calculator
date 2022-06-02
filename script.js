@@ -11,6 +11,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return "ERROR";
+    }
     return Math.round(num1 / num2);
 }
 
@@ -41,7 +44,6 @@ function hasOperator(str) {
 }
 
 function evaluate_expression(str) {
-    console.log("LOOK HERE:" + str + ".");
     // find the two numbers and the operator
     let operator_char = '';
     let found_operator = false;
@@ -89,6 +91,13 @@ inputs.forEach((input) => {
             - display updated expression with the new operator,
             unless the operator was =, then display result only
         */
+       if (expression === "ERROR") {
+           expression = '';
+       }
+       console.log(expression);
+       if (expression != "" && expression.toString().includes('NaN')) {
+           expression = '';
+       }
         // update display using expression
         if (e.target.textContent === '=' || e.target.textContent === '+'
         || e.target.textContent === '−' || e.target.textContent === '×'
@@ -114,15 +123,3 @@ inputs.forEach((input) => {
         display.textContent = expression;
     })
 });
-
-
-/* 
-  if (!isEmpty(expression) && e.target.textContent === '=' || e.target.textContent === '+'
-        || e.target.textContent === '−' || e.target.textContent === '×'
-        || e.target.textContent === '÷') {
-            expression += ' ';
-        }
-        if (!isEmpty(expression) && isNaN(expression.charAt(expression.length - 1))) {
-            expression += ' ';
-        }
-*/

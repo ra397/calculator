@@ -18,10 +18,21 @@
 }
 
 .row.display {
+    justify-content: right;
+}
+
+.clear {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    width: 124px;
+    height: 100px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.clear:hover {
+    font-size: 38px;
 }
 
 .input {

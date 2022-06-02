@@ -28,9 +28,10 @@ function operate(operator, num1, num2) {
     }
 }
 
+// returns true if the string has an operator (not including the equals operator)
 function hasOperator(str) {
     for (let i = 0; i < str.length; i++) {
-        if (str.charAt(i) === '=' || str.charAt(i) === '+'
+        if (str.charAt(i) === '+'
         || str.charAt(i) === '−' || str.charAt(i) === '×'
         || str.charAt(i) === '÷') {
             return true;
@@ -43,8 +44,8 @@ function evaluate_expression(str) {
     console.log(str);
 }
 
-// A string representing the display window 
-let expression = '';
+// An array storing user input 
+let expression = "";
 
 // create a reference for all number keys
 const inputs = document.querySelectorAll('.input');
@@ -57,31 +58,35 @@ const display = document.querySelector('.row.display');
 
 inputs.forEach((input) => {
     input.addEventListener('click', function(e) {
-        // update expression
+        /*
+        Specifications:
+        1- cannot input operator if expression is empty
+        2- equals operator cannot be first operator in expression
+        3- With every operator input:
+            - evaluate and update expression
+            - display updated expression with the new operator,
+            unless the operator was =, then display result only
+        */
+        // update display using expression
         if (e.target.textContent === '=' || e.target.textContent === '+'
         || e.target.textContent === '−' || e.target.textContent === '×'
-        || e.target.textContent === '÷') {
-            expression += ' ';
+        || e.target.textContent === '÷') { // if input is an operator
+
+        } else {
+            expression += e.target.textContent;
         }
-        if (isNaN(expression.charAt(expression.length - 1))) {
-            expression += ' ';
-        }
-        expression += e.target.textContent;
-        // update display using expression
         display.textContent = expression;
     })
 });
 
-operators.forEach((operator) => {
-    operator.addEventListener('click', () => {
-        /*
-            Specifications:
-            1- cannot input operator if expression is empty
-            2- equals operator cannot be first operator in expression
-            3- With every operator input:
-                - evaluate and update expression
-                - display updated expression with the new operator,
-                unless the operator was =, then display result only
-        */
-    })
-})
+
+/* 
+  if (!isEmpty(expression) && e.target.textContent === '=' || e.target.textContent === '+'
+        || e.target.textContent === '−' || e.target.textContent === '×'
+        || e.target.textContent === '÷') {
+            expression += ' ';
+        }
+        if (!isEmpty(expression) && isNaN(expression.charAt(expression.length - 1))) {
+            expression += ' ';
+        }
+*/

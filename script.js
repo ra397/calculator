@@ -64,7 +64,6 @@ function evaluate_expression(str) {
         }
     }
   
-    console.log(operator_char, firstNum, secondNum);
     return operate(operator_char, parseInt(firstNum), parseInt(secondNum));
 }
 
@@ -94,7 +93,6 @@ inputs.forEach((input) => {
        if (expression === "ERROR") {
            expression = '';
        }
-       console.log(expression);
        if (expression != "" && expression.toString().includes('NaN')) {
            expression = '';
        }
@@ -123,3 +121,10 @@ inputs.forEach((input) => {
         display.textContent = expression;
     })
 });
+
+const clear_button = document.querySelector('.clear');
+clear_button.addEventListener('click', () => {
+    console.log('here')
+    expression = '';
+    display.textContent = expression;
+})

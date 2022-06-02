@@ -18,21 +18,19 @@
 }
 
 .row.display {
-    justify-content: right;
-}
-
-.clear {
-    display: flex;
-    align-items: center;
+    flex: 1;
     justify-content: center;
-    width: 124px;
-    height: 100px;
-    text-align: center;
-    font-size: 26px;
+    align-items: center;
+    font-size: 32px;
 }
 
-.clear:hover {
-    font-size: 38px;
+button {
+    width: 124px;
+    font-size: 20px;
+}
+
+button:hover {
+    font-size: 32px;
 }
 
 .input {

@@ -28,11 +28,29 @@ function operate(operator, num1, num2) {
     }
 }
 
+function hasOperator(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (str.charAt(i) === '=' || str.charAt(i) === '+'
+        || str.charAt(i) === '−' || str.charAt(i) === '×'
+        || str.charAt(i) === '÷') {
+            return true;
+        } 
+    }
+    return false;
+}
+
+function evaluate_expression(str) {
+    console.log(str);
+}
+
 // A string representing the display window 
 let expression = '';
 
-// create a reference for all calculator keys
+// create a reference for all number keys
 const inputs = document.querySelectorAll('.input');
+
+// create a reference for all operator keys
+const operators = document.querySelectorAll('.input.operator');
 
 // create a reference for the display window
 const display = document.querySelector('.row.display');
@@ -53,3 +71,17 @@ inputs.forEach((input) => {
         display.textContent = expression;
     })
 });
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        /*
+            Specifications:
+            1- cannot input operator if expression is empty
+            2- equals operator cannot be first operator in expression
+            3- With every operator input:
+                - evaluate and update expression
+                - display updated expression with the new operator,
+                unless the operator was =, then display result only
+        */
+    })
+})

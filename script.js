@@ -41,7 +41,28 @@ function hasOperator(str) {
 }
 
 function evaluate_expression(str) {
-    console.log(str);
+    // find the two numbers and the operator
+    let operator_char = '';
+    let found_operator = false;
+
+    let firstNum = '';
+    let secondNum = '';
+
+    for (let i = 0; i < str.length; i++) {
+        if (!isNaN(str.charAt(i)) && !found_operator) {
+            firstNum += str.charAt(i);
+        }
+        if (!isNaN(str.charAt(i)) && found_operator) {
+            secondNum += str.charAt(i);
+        }
+        if (isNaN(str.charAt(i))) {
+            operator_char = str.charAt(i);
+            found_operator = true;
+        }
+    }
+  
+    console.log(operator_char, firstNum, secondNum);
+    return operate(operator_char, parseInt(firstNum), parseInt(secondNum));
 }
 
 // An array storing user input 
@@ -71,7 +92,21 @@ inputs.forEach((input) => {
         if (e.target.textContent === '=' || e.target.textContent === '+'
         || e.target.textContent === '−' || e.target.textContent === '×'
         || e.target.textContent === '÷') { // if input is an operator
-
+            if (expression != "") { // cannot input operator if expression is empty
+                if (e.target.textContent === '=') {
+                    if (hasOperator(expression)) {
+                        // evaluate and update expression
+                        evaluate_expression(expression);
+                    }
+                } else {
+                    if (hasOperator(expression)) {
+                        // evaluate and update expression, append new operator
+                        evaluate_expression(expression);
+                    } else {
+                        expression += e.target.textContent;
+                    }
+                }
+            }
         } else {
             expression += e.target.textContent;
         }

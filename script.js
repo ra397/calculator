@@ -124,7 +124,6 @@ inputs.forEach((input) => {
 
 const clear_button = document.querySelector('.clear');
 clear_button.addEventListener('click', () => {
-    console.log('here')
     expression = '';
     display.textContent = expression;
 })

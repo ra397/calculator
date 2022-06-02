@@ -45,6 +45,10 @@ button:hover {
     font-size: 45px;
 }
 
+.input.operator {
+    background-color: rgb(189, 189, 190);
+}
+
 #equals {
     flex: 2;
 }
